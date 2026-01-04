@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 WS="$HOME/development/ros/gem_cutter_manipulator"  #change this to your cloned path
 
 echo ">>> Cleaning build, install, log in $WS"

@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<robot name="gem_cutter_arm">
+
+  <!-- Materials kept simple and high-contrast so RViz is readable -->
+  <material name="base_black"><color rgba="0.5 0.5 0.5 1.0"/></material>
+  <material name="orange"><color rgba="1.00 0.55 0.10 1.0"/></material>
+  <material name="blue"><color rgba="0.20 0.55 1.00 1.0"/></material>
+  <material name="green"><color rgba="0.20 0.90 0.35 1.0"/></material>
+  <material name="yellow"><color rgba="0.95 0.90 0.20 1.0"/></material>
+  <material name="tool_silver"><color rgba="0.80 0.80 0.85 1.0"/></material>
+  <material name="marker_red"><color rgba="1.00 0.15 0.15 1.0"/></material>
+
+  <!-- Frames: REP-103 (X forward, Y left, Z up)
+       J1: Z yaw
+       J2: Y pitch
+       J3: Y pitch
+       J4: Y pitch
+       J5: X roll
+       J6: Z yaw (keeps 6-DOF since tool is fixed)
+  -->
+
+  <!-- Base plate: 9cm x 8.4cm -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.0025" rpy="0 0 0"/>
+      <mass value="0.35"/>
+      <inertia ixx="0.0005" ixy="0" ixz="0" iyy="0.0005" iyz="0" izz="0.0008"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.0025" rpy="0 0 0"/>
+      <geometry><box size="0.09 0.084 0.005"/></geometry>
+      <material name="base_black"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0025" rpy="0 0 0"/>
+      <geometry><box size="0.09 0.084 0.005"/></geometry>
+    </collision>
+  </link>
+
+  <!-- J1: base yaw. This can safely be full rotation in the model. -->
+  <joint name="joint1_base_yaw" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1_pedestal"/>
+    <origin xyz="0 0 0.005" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14159" upper="3.14159" effort="2.0" velocity="2.0"/>
+    <dynamics damping="0.2" friction="0.1"/>
+  </joint>
+
+  <link name="link1_pedestal">
+    <inertial>
+      <origin xyz="0 0 0.0325" rpy="0 0 0"/>
+      <mass value="0.25"/>
+      <inertia ixx="0.00025" ixy="0" ixz="0" iyy="0.00025" iyz="0" izz="0.00020"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0.0325" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.02" length="0.065"/></geometry>
+      <material name="base_black"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0325" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.02" length="0.065"/></geometry>
+    </collision>
+
+    <!-- Shoulder servo block (approx). This is the main thing the arm can collide with. -->
+    <visual>
+      <origin xyz="0 0 0.060" rpy="0 0 0"/>
+      <geometry><box size="0.055 0.030 0.045"/></geometry>
+      <material name="base_black"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.060" rpy="0 0 0"/>
+      <geometry><box size="0.055 0.030 0.045"/></geometry>
+    </collision>
+  </link>
+
+  <!-- J2: shoulder pitch
+       Limit tightened slightly to stop the upper arm from swinging down into the pedestal/base block. -->
+  <joint name="joint2_shoulder_pitch" type="revolute">
+    <parent link="link1_pedestal"/>
+    <child link="link2_upper_arm"/>
+    <origin xyz="0 0 0.065" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <!-- ~[-72°, +77°] -->
+    <limit lower="-1.25" upper="1.35" effort="2.0" velocity="2.0"/>
+    <dynamics damping="0.25" friction="0.10"/>
+  </joint>
+
+  <link name="link2_upper_arm">
+    <inertial>
+      <origin xyz="0.055 0 0" rpy="0 0 0"/>
+      <mass value="0.22"/>
+      <inertia ixx="0.00018" ixy="0" ixz="0" iyy="0.00045" iyz="0" izz="0.00045"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0.055 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.11 0.030 0.030"/></geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <origin xyz="0.055 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.11 0.030 0.030"/></geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0.015 0 0.030" rpy="0 0 0"/>
+      <geometry><box size="0.050 0.028 0.040"/></geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <origin xyz="0.015 0 0.030" rpy="0 0 0"/>
+      <geometry><box size="0.050 0.028 0.040"/></geometry>
+    </collision>
+  </link>
+
+  <!-- J3: elbow pitch
+       Allow a big fold, but avoid extreme “back-bending” that tends to intersect the shoulder block with this collision model. -->
+  <joint name="joint3_elbow_pitch" type="revolute">
+    <parent link="link2_upper_arm"/>
+    <child link="link3_forearm"/>
+    <origin xyz="0.11 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <!-- about ±120° -->
+    <limit lower="-2.10" upper="2.10" effort="2.0" velocity="2.0"/>
+    <dynamics damping="0.20" friction="0.08"/>
+  </joint>
+
+  <link name="link3_forearm">
+    <inertial>
+      <origin xyz="0.05 0 0" rpy="0 0 0"/>
+      <mass value="0.18"/>
+      <inertia ixx="0.00012" ixy="0" ixz="0" iyy="0.00028" iyz="0" izz="0.00028"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0.05 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.10 0.028 0.028"/></geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0.05 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.10 0.028 0.028"/></geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0.015 0 0.030" rpy="0 0 0"/>
+      <geometry><box size="0.050 0.028 0.040"/></geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0.015 0 0.030" rpy="0 0 0"/>
+      <geometry><box size="0.050 0.028 0.040"/></geometry>
+    </collision>
+  </link>
+
+  <!-- J4: wrist pitch
+       This is where the tool can easily swing back into the forearm with simplified collisions. -->
+  <joint name="joint4_wrist_pitch" type="revolute">
+    <parent link="link3_forearm"/>
+    <child link="link4_wrist_pitch_link"/>
+    <origin xyz="0.10 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <!-- about ±97° -->
+    <limit lower="-1.70" upper="1.70" effort="1.5" velocity="2.5"/>
+    <dynamics damping="0.15" friction="0.06"/>
+  </joint>
+
+  <link name="link4_wrist_pitch_link">
+    <inertial>
+      <origin xyz="0.02 0 0" rpy="0 0 0"/>
+      <mass value="0.10"/>
+      <inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00006"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0.02 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.04 0.026 0.026"/></geometry>
+      <material name="green"/>
+    </visual>
+    <collision>
+      <origin xyz="0.02 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.04 0.026 0.026"/></geometry>
+    </collision>
+  </link>
+
+  <!-- J5: wrist roll. Full rotation is fine; the fin makes it obvious in RViz. -->
+  <joint name="joint5_wrist_roll" type="revolute">
+    <parent link="link4_wrist_pitch_link"/>
+    <child link="link5_roll_body"/>
+    <origin xyz="0.04 0 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-3.14159" upper="3.14159" effort="1.0" velocity="4.0"/>
+    <dynamics damping="0.10" friction="0.05"/>
+  </joint>
+
+  <link name="link5_roll_body">
+    <inertial>
+      <origin xyz="0.015 0 0" rpy="0 0 0"/>
+      <mass value="0.09"/>
+      <inertia ixx="0.00002" ixy="0" ixz="0" iyy="0.00002" iyz="0" izz="0.000015"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0.015 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder radius="0.015" length="0.03"/></geometry>
+      <material name="yellow"/>
+    </visual>
+    <collision>
+      <origin xyz="0.015 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder radius="0.015" length="0.03"/></geometry>
+    </collision>
+
+    <!-- Offset fin so roll about X is easy to see -->
+    <visual>
+      <origin xyz="0.015 0.020 0" rpy="0 0 0"/>
+      <geometry><box size="0.010 0.040 0.006"/></geometry>
+      <material name="marker_red"/>
+    </visual>
+    <collision>
+      <origin xyz="0.015 0.020 0" rpy="0 0 0"/>
+      <geometry><box size="0.010 0.040 0.006"/></geometry>
+    </collision>
+  </link>
+
+  <!-- J6: tool yaw. Full rotation is fine. -->
+  <joint name="joint6_tool_yaw" type="revolute">
+    <parent link="link5_roll_body"/>
+    <child link="tool_mount"/>
+    <origin xyz="0.03 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14159" upper="3.14159" effort="0.8" velocity="4.0"/>
+    <dynamics damping="0.10" friction="0.05"/>
+  </joint>
+
+  <link name="tool_mount">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.03"/>
+      <inertia ixx="0.000005" ixy="0" ixz="0" iyy="0.000005" iyz="0" izz="0.000005"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><sphere radius="0.01"/></geometry>
+      <material name="tool_silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><sphere radius="0.01"/></geometry>
+    </collision>
+  </link>
+
+  <!-- Fixed tool (cutter/screwdriver style) -->
+  <joint name="ee_fixed" type="fixed">
+    <parent link="tool_mount"/>
+    <child link="ee_tool"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="ee_tool">
+    <inertial>
+      <origin xyz="0.0165 0 0" rpy="0 0 0"/>
+      <mass value="0.05"/>
+      <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00002" iyz="0" izz="0.00002"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0.015 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder radius="0.004" length="0.03"/></geometry>
+      <material name="tool_silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.015 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder radius="0.004" length="0.03"/></geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0.033 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder radius="0.0025" length="0.006"/></geometry>
+      <material name="tool_silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.033 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder radius="0.0025" length="0.006"/></geometry>
+    </collision>
+  </link>
+
+</robot>
