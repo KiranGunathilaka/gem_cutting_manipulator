@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+    <world name="gem_cutter_world">
+
+        <!-- Basic environment -->
+        <gravity>0 0 -9.81</gravity>
+
+        <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics" />
+
+        <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands" />
+
+        <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster" />
+
+        <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors" />
+
+        <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu" />
+
+        <plugin filename="gz-sim-contact-system" name="gz::sim::systems::Contact" />
+
+        <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher" />
+
+        <!-- Light -->
+        <light name="sun" type="directional">
+            <cast_shadows>true</cast_shadows>
+            <pose>0 0 10 0 0 0</pose>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+            <direction>-0.5 0.1 -1</direction>
+        </light>
+
+        <!-- Ground plane -->
+        <model name="ground_plane">
+            <static>true</static>
+            <pose>0 0 0 0 0 0</pose>
+            <link name="ground_link">
+                <collision name="collision">
+                    <geometry>
+                        <plane>
+                            <normal>0 0 1</normal>
+                            <size>10 10</size>
+                        </plane>
+                    </geometry>
+                </collision>
+                <visual name="visual">
+                    <geometry>
+                        <plane>
+                            <normal>0 0 1</normal>
+                            <size>10 10</size>
+                        </plane>
+                    </geometry>
+                    <material>
+                        <ambient>0.6 0.6 0.6 1</ambient>
+                        <diffuse>0.6 0.6 0.6 1</diffuse>
+                    </material>
+                </visual>
+            </link>
+        </model>
+
+        <model name="gem_stand">
+            <static>true</static>
+            <pose>0.25 0 0 0 0 0</pose>
+
+            <link name="stand_link">
+
+                <!-- Base block -->
+                <collision name="base_collision">
+                    <pose>0 0 0.02 0 0 0</pose>
+                    <geometry>
+                        <box>
+                            <size>0.12 0.12 0.04</size>
+                        </box>
+                    </geometry>
+                </collision>
+                <visual name="base_visual">
+                    <pose>0 0 0.02 0 0 0</pose>
+                    <geometry>
+                        <box>
+                            <size>0.12 0.12 0.04</size>
+                        </box>
+                    </geometry>
+                    <material>
+                        <ambient>0.15 0.15 0.15 1</ambient>
+                        <diffuse>0.15 0.15 0.15 1</diffuse>
+                    </material>
+                </visual>
+
+                <!-- Vertical rod -->
+                <collision name="rod_collision">
+                    <pose>0 0 0.17 0 0 0</pose>
+                    <geometry>
+                        <cylinder>
+                            <radius>0.01</radius>
+                            <length>0.26</length>
+                        </cylinder>
+                    </geometry>
+                </collision>
+                <visual name="rod_visual">
+                    <pose>0 0 0.17 0 0 0</pose>
+                    <geometry>
+                        <cylinder>
+                            <radius>0.01</radius>
+                            <length>0.26</length>
+                        </cylinder>
+                    </geometry>
+                    <material>
+                        <ambient>0.75 0.75 0.75 1</ambient>
+                        <diffuse>0.75 0.75 0.75 1</diffuse>
+                    </material>
+                </visual>
+
+                <!-- "Gem" (simple diamond-ish: a short cone) -->
+                <collision name="gem_collision">
+                    <pose>0 0 0.325 0 0 0</pose>
+                    <geometry>
+                        <cone>
+                            <radius>0.04</radius>
+                            <length>0.08</length>
+                        </cone>
+                    </geometry>
+                </collision>
+                <visual name="gem_visual">
+                    <pose>0 0 0.325 0 0 0</pose>
+                    <geometry>
+                        <cone>
+                            <radius>0.04</radius>
+                            <length>0.08</length>
+                        </cone>
+                    </geometry>
+                    <material>
+                        <ambient>0.2 0.8 1.0 0.7</ambient>
+                        <diffuse>0.2 0.8 1.0 0.7</diffuse>
+                        <specular>0.9 0.9 0.9 1</specular>
+                    </material>
+                </visual>
+
+            </link>
+        </model>
+
+    </world>
+</sdf>

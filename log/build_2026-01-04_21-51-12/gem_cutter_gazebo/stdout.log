@@ -49,13 +49,18 @@
 -- Looking for gz-msgs10 -- found version 10.3.2
 -- Found gem_cutter_description: 0.0.0 (/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_description/share/gem_cutter_description/cmake)
 -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Configured 'flake8' exclude dirs and/or files: 
 -- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
 -- Added test 'xmllint' to check XML markup files
 -- Configuring done (1.8s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/build/gem_cutter_gazebo
 -- Install configuration: ""
 -- Execute custom install script
+-- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_gazebo/share/gem_cutter_gazebo/worlds/gem_cutter_world.sdf
+-- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_gazebo/share/gem_cutter_gazebo/launch/sim.launch.py
 -- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_gazebo/share/ament_index/resource_index/package_run_dependencies/gem_cutter_gazebo
 -- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_gazebo/share/ament_index/resource_index/parent_prefix_path/gem_cutter_gazebo
 -- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_gazebo/share/gem_cutter_gazebo/environment/ament_prefix_path.sh

@@ -5,7 +5,7 @@ set(gem_cutter_gazebo_BUILD_DEPENDS "ros_gz_sim" "ros_gz_bridge" "gem_cutter_des
 set(gem_cutter_gazebo_BUILDTOOL_DEPENDS "ament_cmake")
 set(gem_cutter_gazebo_BUILD_EXPORT_DEPENDS "ros_gz_sim" "ros_gz_bridge" "gem_cutter_description")
 set(gem_cutter_gazebo_BUILDTOOL_EXPORT_DEPENDS )
-set(gem_cutter_gazebo_EXEC_DEPENDS "ros_gz_sim" "ros_gz_bridge" "gem_cutter_description")
+set(gem_cutter_gazebo_EXEC_DEPENDS "robot_state_publisher" "joint_state_publisher_gui" "ros_gz_sim" "ros_gz_bridge" "gem_cutter_description")
 set(gem_cutter_gazebo_TEST_DEPENDS "ament_lint_auto" "ament_lint_common")
 set(gem_cutter_gazebo_GROUP_DEPENDS )
 set(gem_cutter_gazebo_MEMBER_OF_GROUPS )

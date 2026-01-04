@@ -28,7 +28,7 @@
 -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
 -- Added test 'lint_cmake' to check CMake code style
 -- Added test 'xmllint' to check XML markup files
--- Configuring done (1.4s)
+-- Configuring done (1.3s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/build/gem_cutter_moveit_config
 -- Install configuration: ""

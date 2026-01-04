@@ -1,1 +1,1 @@
-ros_gz_sim;ros_gz_bridge;gem_cutter_description;ament_lint_auto;ament_lint_common
+ros_gz_sim;ros_gz_bridge;gem_cutter_description;robot_state_publisher;joint_state_publisher_gui;ament_lint_auto;ament_lint_common
