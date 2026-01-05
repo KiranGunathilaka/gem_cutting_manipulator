@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Simple, high-contrast RViz materials -->
+  <material name="base_black">
+    <color rgba="0.40 0.40 0.40 1.0"/>
+  </material>
+
+  <material name="gray">
+    <color rgba="0.75 0.75 0.75 1.0"/>
+  </material>
+
+  <material name="purple">
+    <color rgba="0.55 0.25 0.85 1.0"/>
+  </material>
+
+  <material name="light_blueish_green">
+    <color rgba="0.35 0.85 0.80 1.0"/>
+  </material>
+
+  <material name="green">
+    <color rgba="0.20 0.85 0.35 1.0"/>
+  </material>
+
+  <material name="light_blue">
+    <color rgba="0.45 0.75 1.00 1.0"/>
+  </material>
+
+  <material name="tool_silver">
+    <color rgba="0.82 0.82 0.88 1.0"/>
+  </material>
+
+  <material name="marker_red">
+    <color rgba="1.00 0.10 0.10 1.0"/>
+  </material>
+
+</robot>

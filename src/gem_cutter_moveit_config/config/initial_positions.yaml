@@ -1,0 +1,9 @@
+# Default initial positions for gem_cutter_arm's ros2_control fake system
+
+initial_positions:
+  joint1_base_yaw: 0
+  joint2_shoulder_pitch: 0
+  joint3_elbow_pitch: 0
+  joint4_wrist_pitch: 0
+  joint5_wrist_roll: 0
+  joint6_tool_yaw: 0

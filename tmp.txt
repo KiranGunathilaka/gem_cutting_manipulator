@@ -1,0 +1,5 @@
+ros2 run xacro xacro \
+  $(ros2 pkg prefix gem_cutter_description)/share/gem_cutter_description/urdf/gem_cutter_arm.urdf.xacro \
+  > /tmp/gem_cutter_arm.urdf
+
+ros2 launch moveit_setup_assistant setup_assistant.launch.py

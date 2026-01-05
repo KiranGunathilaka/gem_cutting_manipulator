@@ -351,3 +351,12 @@ ament_cmake_symlink_install_files("/home/kiran_gunathilaka/development/ros/gem_c
 
 # install(FILES "/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_moveit_config/package.xml" "DESTINATION" "share/gem_cutter_moveit_config")
 ament_cmake_symlink_install_files("/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_moveit_config" FILES "/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_moveit_config/package.xml" "DESTINATION" "share/gem_cutter_moveit_config")
+
+# install(DIRECTORY "launch" "DESTINATION" "share/gem_cutter_moveit_config" "PATTERN_EXCLUDE" "setup_assistant.launch")
+ament_cmake_symlink_install_directory("/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_moveit_config" DIRECTORY "launch" "DESTINATION" "share/gem_cutter_moveit_config" "PATTERN_EXCLUDE" "setup_assistant.launch")
+
+# install(DIRECTORY "config" "DESTINATION" "share/gem_cutter_moveit_config")
+ament_cmake_symlink_install_directory("/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_moveit_config" DIRECTORY "config" "DESTINATION" "share/gem_cutter_moveit_config")
+
+# install(FILES ".setup_assistant" "DESTINATION" "share/gem_cutter_moveit_config")
+ament_cmake_symlink_install_files("/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_moveit_config" FILES ".setup_assistant" "DESTINATION" "share/gem_cutter_moveit_config")

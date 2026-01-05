@@ -1,0 +1,1 @@
+/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_moveit_config/launch/move_group.launch.py

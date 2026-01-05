@@ -1,0 +1,39 @@
+default_velocity_scaling_factor: 0.5
+default_acceleration_scaling_factor: 0.5
+
+joint_limits:
+  joint1_base_yaw:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 3.0
+
+  joint2_shoulder_pitch:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 3.0
+
+  joint3_elbow_pitch:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 3.0
+
+  joint4_wrist_pitch:
+    has_velocity_limits: true
+    max_velocity: 2.5
+    has_acceleration_limits: true
+    max_acceleration: 4.0
+
+  joint5_wrist_roll:
+    has_velocity_limits: true
+    max_velocity: 4.0
+    has_acceleration_limits: true
+    max_acceleration: 6.0
+
+  joint6_tool_yaw:
+    has_velocity_limits: true
+    max_velocity: 4.0
+    has_acceleration_limits: true
+    max_acceleration: 6.0
