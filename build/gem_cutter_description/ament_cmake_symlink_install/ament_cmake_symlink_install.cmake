@@ -310,8 +310,8 @@ message(STATUS "Execute custom install script")
 
 # begin of custom install code
 
-# install(DIRECTORY "urdf" "meshes" "config" "launch" "DESTINATION" "share/gem_cutter_description")
-ament_cmake_symlink_install_directory("/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_description" DIRECTORY "urdf" "meshes" "config" "launch" "DESTINATION" "share/gem_cutter_description")
+# install(DIRECTORY "urdf" "config" "launch" "DESTINATION" "share/gem_cutter_description")
+ament_cmake_symlink_install_directory("/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_description" DIRECTORY "urdf" "config" "launch" "DESTINATION" "share/gem_cutter_description")
 
 # install(FILES "model.config" "DESTINATION" "share/gem_cutter_description")
 ament_cmake_symlink_install_files("/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_description" FILES "model.config" "DESTINATION" "share/gem_cutter_description")

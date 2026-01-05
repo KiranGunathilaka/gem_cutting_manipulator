@@ -21,6 +21,7 @@
 /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/launch/spawn_controllers.launch.py
 /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/launch/static_virtual_joint_tfs.launch.py
 /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/launch/warehouse_db.launch.py
+/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/lib/gem_cutter_moveit_config/spawn_scene.py
 /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/config/gem_cutter_arm.ros2_control.xacro
 /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/config/gem_cutter_arm.srdf
 /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/config/gem_cutter_arm.urdf.xacro

@@ -7,17 +7,12 @@
      An automatically generated package with all the configuration and launch files for using the gem_cutter_arm with the MoveIt Motion Planning Framework
   </description>
   <maintainer email="nihara@gmail.com"> nihara</maintainer>
-
   <license>BSD-3-Clause</license>
-
   <url type="website">http://moveit.ros.org/</url>
   <url type="bugtracker">https://github.com/moveit/moveit2/issues</url>
   <url type="repository">https://github.com/moveit/moveit2</url>
-
   <author email="nihara@gmail.com"> nihara</author>
-
   <buildtool_depend>ament_cmake</buildtool_depend>
-
   <exec_depend>moveit_ros_move_group</exec_depend>
   <exec_depend>moveit_kinematics</exec_depend>
   <exec_depend>moveit_planners</exec_depend>
@@ -44,9 +39,11 @@
   <exec_depend>tf2_ros</exec_depend>
   <exec_depend>warehouse_ros_mongo</exec_depend>
   <exec_depend>xacro</exec_depend>
-
-
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>moveit_msgs</exec_depend>
+  <exec_depend>shape_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
   <export>
-      <build_type>ament_cmake</build_type>
+    <build_type>ament_cmake</build_type>
   </export>
 </package>

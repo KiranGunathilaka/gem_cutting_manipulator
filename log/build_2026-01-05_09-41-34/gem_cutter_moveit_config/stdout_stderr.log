@@ -13,7 +13,7 @@
 -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
 -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
 -- Override CMake install command with custom implementation using symlinks instead of copying resources
--- Configuring done (0.6s)
+-- Configuring done (0.7s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/build/gem_cutter_moveit_config
 -- Install configuration: ""
@@ -41,6 +41,7 @@
 -- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/launch/spawn_controllers.launch.py
 -- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/launch/static_virtual_joint_tfs.launch.py
 -- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/launch/warehouse_db.launch.py
+-- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/lib/gem_cutter_moveit_config/spawn_scene.py
 -- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/config/gem_cutter_arm.ros2_control.xacro
 -- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/config/gem_cutter_arm.srdf
 -- Symlinking: /home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/install/gem_cutter_moveit_config/share/gem_cutter_moveit_config/config/gem_cutter_arm.urdf.xacro

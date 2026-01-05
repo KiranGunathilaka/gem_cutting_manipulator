@@ -355,6 +355,9 @@ ament_cmake_symlink_install_files("/home/kiran_gunathilaka/development/ros/gem_c
 # install(DIRECTORY "launch" "DESTINATION" "share/gem_cutter_moveit_config" "PATTERN_EXCLUDE" "setup_assistant.launch")
 ament_cmake_symlink_install_directory("/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_moveit_config" DIRECTORY "launch" "DESTINATION" "share/gem_cutter_moveit_config" "PATTERN_EXCLUDE" "setup_assistant.launch")
 
+# install(PROGRAMS "scripts/spawn_scene.py" "DESTINATION" "lib/gem_cutter_moveit_config")
+ament_cmake_symlink_install_programs("/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_moveit_config" PROGRAMS "scripts/spawn_scene.py" "DESTINATION" "lib/gem_cutter_moveit_config")
+
 # install(DIRECTORY "config" "DESTINATION" "share/gem_cutter_moveit_config")
 ament_cmake_symlink_install_directory("/home/kiran_gunathilaka/development/ros/gem_cutter_manipulator/src/gem_cutter_moveit_config" DIRECTORY "config" "DESTINATION" "share/gem_cutter_moveit_config")
 

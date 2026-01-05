@@ -12,7 +12,7 @@ find_package(xacro REQUIRED)
 find_package(rviz2 REQUIRED)
 
 install(
-  DIRECTORY urdf meshes config launch
+  DIRECTORY urdf config launch
   DESTINATION share/${PROJECT_NAME}
 )
 
